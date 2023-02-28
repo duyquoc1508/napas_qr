@@ -11,12 +11,12 @@ const CRC_LENGTH = '04';
 // qr động đên stk
 const qrRawData = {
   qrType: 'DYNAMIC', // STATIC
-  bin: '970405',
-  receiverNumber: '9704051078942458',
-  instrumentType: 'CARD', // CARD
-  amount: 180000,
-  // orderId: 'NPS6869',
-  description: 'thanh toan don hang'
+  bin: '970416',
+  receiverNumber: '224528479',
+  instrumentType: 'ACCOUNT', // CARD
+  amount: 10000,
+  orderId: 'NPS6869',
+  description: 'test chuyen khoan orderid'
 };
 
 function main() {
@@ -24,9 +24,7 @@ function main() {
   const rawQRString = generateQRString(qrProperties);
   const qrContentNoChecksum = rawQRString + CRC_ID + CRC_LENGTH;
   const checksum = calculateCRC(qrContentNoChecksum);
-  console.log(checksum)
   const qrString = qrContentNoChecksum + checksum.toUpperCase();
-  console.log(qrString)
   qr.toFile(
     'qr.png',
     qrString,
